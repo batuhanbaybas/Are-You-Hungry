@@ -1,0 +1,25 @@
+--Kullanıcı yemek tarifi arayabilecek 
+-- kullanıcı beğendiği tarifleri ayrı bi yerde görüntüleyebilecek
+--kullanıcı yemek tariflerinin kesinlikle foroğrafı olmalı 
+-- rastgele yemek tarifi ekrana gelmeli ör:günün tarifi gibi
+--kullanıcı isterse menü oluşturabilmeli menüleri istediği gibi isimlendirebilmeli 
+
+
+kullanılacaklar
+--badge,
+
+
+
+
+
+
+
+` <img src="${element.strMealThumb}" class="card-img-top" alt="${element.strMeal}">
+               <div class="card-body">
+                 <h5 class="card-title">${element.strMeal}</h5>
+                 <a href="#" class="btn btn-primary">Go somewhere</a>`
+
+
+
+
+                  
