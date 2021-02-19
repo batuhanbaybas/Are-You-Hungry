@@ -45,16 +45,33 @@ fetch(allCategoryApi)
             newDiv.classList = "card-body";
             div.appendChild(newDiv);
             let h5 = document.createElement("h5");
-            h5.classList = "card-title";
+            h5.classList = "card-title text-center";
             h5.innerHTML = element.strMeal;
             newDiv.appendChild(h5);
             let button = document.createElement("button");
-            button.classList = "btn btn-primary";
+            button.classList = "btn btn-primary text-center";
             button.innerText = "Tarif için tıkla";
+            button.addEventListener("click", (e)=>{
+              let idValue = element.idMeal
+              Getİngredients(idValue)
+              
+            })
             button.setAttribute("type","button")
             newDiv.appendChild(button);
           }
          
         });
     };
+    
   });
+  Getİngredients=(idValue)=>{
+    fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idValue}`)
+    .then(response => {
+        return response.json()
+    })
+    .then(e =>{
+      e.meals.forEach(element => {
+        filterCategory.innerHTML=`<img src="${element.strMealThumb}"/>`
+      });
+    })
+  }
