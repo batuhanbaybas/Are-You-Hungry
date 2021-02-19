@@ -31,7 +31,7 @@ fetch(allCategoryApi)
             const element = e.meals[i];
             console.log(element.strMeal);
             let div = document.createElement("div");
-            div.classList = "card border border-warning mt-5";
+            div.classList = "card border border-warning mt-3 overflow-hidden";
             div.setAttribute("style", "width:18rem;");
             filterCategory.appendChild(div);
             let image = document.createElement("img");
@@ -48,8 +48,10 @@ fetch(allCategoryApi)
             let button = document.createElement("button");
             button.classList = "btn btn-primary";
             button.innerText = "Tarif için tıkla";
+            button.setAttribute("type","submit")
             newDiv.appendChild(button);
           }
+         
         });
 
       console.log(value);
