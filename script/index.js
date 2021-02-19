@@ -22,6 +22,9 @@ fetch(allCategoryApi)
       });
     });
     ChangeCategory = (e) => {
+      if (filterCategory.innerHTML.length > 0) {
+        filterCategory.innerHTML = ""
+      }
       let value = e.target.innerHTML;
       fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${value}`)
         .then((response) => {
@@ -53,7 +56,5 @@ fetch(allCategoryApi)
           }
          
         });
-
-      console.log(value);
     };
   });
