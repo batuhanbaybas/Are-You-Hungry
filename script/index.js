@@ -10,12 +10,13 @@ fetch(allCategoryApi)
   })
   .then((categories) => {
     categories.meals.forEach((element) => {
-      const li = document.createElement("li");
-      li.className = "list-group-item";
-      li.value = element.strCategory;
-      li.innerHTML = element.strCategory;
-      category.appendChild(li);
-      li.addEventListener("click", (e) => {
+      const button = document.createElement("button");
+      button.className = "list-group-item list-group-item-action"
+      button.value = element.strCategory;
+      button.innerHTML = element.strCategory;
+      button.setAttribute("type","button")
+      category.appendChild(button);
+      button.addEventListener("click", (e) => {
         e.target.innerHTML;
         ChangeCategory(e);
       });
@@ -29,9 +30,8 @@ fetch(allCategoryApi)
         .then((e) => {
           for (let i = 0; i < e.meals.length; i++) {
             const element = e.meals[i];
-            console.log(element.strMeal);
             let div = document.createElement("div");
-            div.classList = "card border border-warning mt-3 overflow-hidden";
+            div.classList = "card border border-warning m-5";
             div.setAttribute("style", "width:18rem;");
             filterCategory.appendChild(div);
             let image = document.createElement("img");
@@ -48,7 +48,7 @@ fetch(allCategoryApi)
             let button = document.createElement("button");
             button.classList = "btn btn-primary";
             button.innerText = "Tarif için tıkla";
-            button.setAttribute("type","submit")
+            button.setAttribute("type","button")
             newDiv.appendChild(button);
           }
          
