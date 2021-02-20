@@ -3,7 +3,7 @@ let category = document.querySelector("#category");
 let changeCategory = document.querySelector("#categoryList");
 let favorite = document.querySelector("#favorite");
 let filterCategory = document.querySelector("#categoryFilter");
-let favoriteFood = []
+let favoriteFood = [];
 
 fetch(allCategoryApi)
   .then((response) => {
@@ -103,20 +103,14 @@ Getİngredients = (idValue) => {
     });
 };
 SetFavorite = (value) => {
- favoriteFood.push(value.strMeal)
- 
-  for (let i = 0; i < favoriteFood.length; i++) {
-    const element = favoriteFood[i];
-    const button = document.createElement("button");
-      button.className = "list-group-item list-group-item-action";
-      button.innerHTML = element
-      button.setAttribute("type", "button");
-      favorite.appendChild(button);
-   if (element == button.innerHTML) {
-     console.log("hello world")
-   }
-  }
- 
- 
-
+  favoriteFood.push(value.strMeal);
+  const button = document.createElement("button");
+  button.className = "list-group-item list-group-item-action";
+  button.innerHTML = value.strMeal;
+  button.setAttribute("type", "button");
+  favorite.appendChild(button);
+  button.addEventListener("click", ()=>{
+    let idValue = value.idMeal
+    Getİngredients(idValue)
+  })
 };
