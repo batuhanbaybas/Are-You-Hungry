@@ -72,15 +72,16 @@ Getİngredients = (idValue) => {
         <div class="card-body">
           <h5 class="card-title">${element.strMeal}</h5>
           <p class="card-text">${element.strInstructions}.</p>
-          <p class="card-text"><small>${element.strIngredient1}-${element.strMeasure1}</small></p>
-          <p class="card-text"><small>${element.strIngredient2}-${element.strMeasure2}</small></p>
-          <p class="card-text"><small>${element.strIngredient3}-${element.strMeasure3}</small></p>
-          <p class="card-text"><small>${element.strIngredient4}-${element.strMeasure4}</small></p>
-          <p class="card-text"><small>${element.strIngredient5}-${element.strMeasure5}</small></p>
-          <p class="card-text"><small>${element.strIngredient6}-${element.strMeasure6}</small></p>
-          <p class="card-text"><small>${element.strIngredient7}-${element.strMeasure7}</small></p>
-          <p class="card-text"><small>${element.strIngredient8}-${element.strMeasure8}</small></p>
-          <p class="card-text"><small>${element.strIngredient9}-${element.strMeasure9}</small></p>
+          <h3 class="text-center">İtems</h3>
+          <p class="card-text text-center"><small>${element.strIngredient1}-${element.strMeasure1}</small></p>
+          <p class="card-text text-center"><small>${element.strIngredient2}-${element.strMeasure2}</small></p>
+          <p class="card-text text-center"><small>${element.strIngredient3}-${element.strMeasure3}</small></p>
+          <p class="card-text text-center"><small>${element.strIngredient4}-${element.strMeasure4}</small></p>
+          <p class="card-text text-center"><small>${element.strIngredient5}-${element.strMeasure5}</small></p>
+          <p class="card-text text-center"><small>${element.strIngredient6}-${element.strMeasure6}</small></p>
+          <p class="card-text text-center"><small>${element.strIngredient7}-${element.strMeasure7}</small></p>
+          <p class="card-text text-center"><small>${element.strIngredient8}-${element.strMeasure8}</small></p>
+          <p class="card-text text-center"><small>${element.strIngredient9}-${element.strMeasure9}</small></p>
         </div><img src="${element.strMealThumb}" class="card-img-bottom" alt="${element.strMeal}">
         </div>
           `;
