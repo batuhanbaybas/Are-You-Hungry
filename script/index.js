@@ -3,6 +3,7 @@ let category = document.querySelector("#category");
 let changeCategory = document.querySelector("#categoryList");
 let favorite = document.querySelector("#favorite");
 let filterCategory = document.querySelector("#categoryFilter");
+let favoriteFood = []
 
 fetch(allCategoryApi)
   .then((response) => {
@@ -47,15 +48,26 @@ fetch(allCategoryApi)
             h5.classList = "card-title text-center";
             h5.innerHTML = element.strMeal;
             newDiv.appendChild(h5);
+            let buttonDiv = document.createElement("div");
+            buttonDiv.classList = "d-flex justify-content-between";
+            newDiv.appendChild(buttonDiv);
             let button = document.createElement("button");
             button.classList = "btn btn-primary text-center";
             button.innerText = "Tarif için tıkla";
+            button.setAttribute("type", "button");
+            buttonDiv.appendChild(button);
+            let span = document.createElement("span");
+            span.classList = "badge rounded-pill bg-success m-2";
+            span.innerHTML = "Merhaba";
+            buttonDiv.appendChild(span);
             button.addEventListener("click", () => {
               let idValue = element.idMeal;
               Getİngredients(idValue);
             });
-            button.setAttribute("type", "button");
-            newDiv.appendChild(button);
+            span.addEventListener("click", () => {
+              let value = element;
+              SetFavorite(value);
+            });
           }
         });
     };
@@ -69,7 +81,9 @@ Getİngredients = (idValue) => {
       e.meals.forEach((element) => {
         filterCategory.innerHTML = `
         <div class="card">
+        
         <div class="card-body">
+        <span class="badge rounded-pill bg-success">Success</span>
           <h5 class="card-title">${element.strMeal}</h5>
           <p class="card-text">${element.strInstructions}.</p>
           <h3 class="text-center">İtems</h3>
@@ -87,4 +101,22 @@ Getİngredients = (idValue) => {
           `;
       });
     });
+};
+SetFavorite = (value) => {
+ favoriteFood.push(value.strMeal)
+ 
+  for (let i = 0; i < favoriteFood.length; i++) {
+    const element = favoriteFood[i];
+    const button = document.createElement("button");
+      button.className = "list-group-item list-group-item-action";
+      button.innerHTML = element
+      button.setAttribute("type", "button");
+      favorite.appendChild(button);
+   if (element == button.innerHTML) {
+     console.log("hello world")
+   }
+  }
+ 
+ 
+
 };
