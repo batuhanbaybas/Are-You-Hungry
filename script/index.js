@@ -116,24 +116,32 @@ Getİngredients = (idValue) => {
 };
 
 SetFavorite = (value) => {
+  if (favoriteFood.includes(value.strMeal)) {
+    return true;
+  }
   favoriteFood.push(value.strMeal);
   const button = document.createElement("button");
   button.className = "list-group-item list-group-item-action";
-  favoriteFood.forEach((element) => {
-    button.innerHTML = element;
-  });
+ favoriteFood.forEach(element =>{
+  button.innerHTML = element
+ }) 
   button.setAttribute("type", "button");
   favorite.appendChild(button);
   button.addEventListener("click", () => {
     let idValue = value.idMeal;
     Getİngredients(idValue);
-    ClearFavorite(value);
   });
+  ClearFavorite = (value) => {
+    if (favoriteFood.includes(value.strMeal)) {
+     console.log(favoriteFood.pop());
+    }
+    if (favoriteFood.length == 0) {
+      button.innerHTML = favoriteFood.map(element =>{
+        element
+      })
+    }
+  button.innerHTML = favoriteFood.map(element =>{
+    element
+  })
+  };
 };
-// ClearFavorite = (value) => {
-//   favoriteFood.pop();
-//   if (favoriteFood.length == 0) {
-//     favorite.innerHTML = "";
-//   }
-//   console.log(favoriteFood);
-// };
