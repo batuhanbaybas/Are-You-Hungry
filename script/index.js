@@ -5,6 +5,34 @@ let favorite = document.querySelector("#favorite");
 let filterCategory = document.querySelector("#categoryFilter");
 const favoriteFood = [];
 
+
+fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+.then(response =>{
+ return response.json()
+}).then(element =>{
+  console.log(element)
+  filterCategory.innerHTML =  `<div class="card">
+        
+  <div class="card-body">
+  <span id="favButton" class="badge rounded-pill bg-success">Favoriye Ekle</span>
+  <span id="removeButton" class="badge rounded-pill bg-danger">Favoriden çıkar</span>
+    <h5 class="card-title">${element.meals[0].strMeal}</h5>
+    <p class="card-text">${element.meals[0].strInstructions}.</p>
+    <h3 class="text-center">İtems</h3>
+    <p class="card-text text-center"><small>${element.meals[0].strIngredient1}-${element.meals[0].strMeasure1}</small></p>
+    <p class="card-text text-center"><small>${element.meals[0].strIngredient2}-${element.meals[0].strMeasure2}</small></p>
+    <p class="card-text text-center"><small>${element.meals[0].strIngredient3}-${element.meals[0].strMeasure3}</small></p>
+    <p class="card-text text-center"><small>${element.meals[0].strIngredient4}-${element.meals[0].strMeasure4}</small></p>
+    <p class="card-text text-center"><small>${element.meals[0].strIngredient5}-${element.meals[0].strMeasure5}</small></p>
+    <p class="card-text text-center"><small>${element.meals[0].strIngredient6}-${element.meals[0].strMeasure6}</small></p>
+    <p class="card-text text-center"><small>${element.meals[0].strIngredient7}-${element.meals[0].strMeasure7}</small></p>
+    <p class="card-text text-center"><small>${element.meals[0].strIngredient8}-${element.meals[0].strMeasure8}</small></p>
+    <p class="card-text text-center"><small>${element.meals[0].strIngredient9}-${element.meals[0].strMeasure9}</small></p>
+    
+  </div><img src="${element.meals[0].strMealThumb}" class="card-img-bottom" alt="${element.meals[0].strMeal}">
+  </div>`;
+})
+
 fetch(allCategoryApi)
   .then((response) => {
     return response.json();
@@ -135,11 +163,9 @@ SetFavorite = (value) => {
     if (favoriteFood.includes(value.strMeal)) {
      console.log(favoriteFood.pop());
     }
-    if (favoriteFood.length == 0) {
-      button.innerHTML = favoriteFood.map(element =>{
-        element
-      })
-    }
+   if (favoriteFood.length==0) {
+     button.innerHTML =""
+   }
   button.innerHTML = favoriteFood.map(element =>{
     element
   })
