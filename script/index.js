@@ -3,7 +3,7 @@ let category = document.querySelector("#category");
 let changeCategory = document.querySelector("#categoryList");
 let favorite = document.querySelector("#favorite");
 let filterCategory = document.querySelector("#categoryFilter");
-let favoriteFood = [];
+const favoriteFood = [];
 
 fetch(allCategoryApi)
   .then((response) => {
@@ -58,8 +58,9 @@ fetch(allCategoryApi)
             buttonDiv.appendChild(button);
             let span = document.createElement("span");
             span.classList = "badge rounded-pill bg-success m-2";
-            span.innerHTML = "Merhaba";
+            span.innerHTML = "Favori";
             buttonDiv.appendChild(span);
+            // Get İd Event
             button.addEventListener("click", () => {
               let idValue = element.idMeal;
               Getİngredients(idValue);
@@ -83,7 +84,8 @@ Getİngredients = (idValue) => {
         <div class="card">
         
         <div class="card-body">
-        <span class="badge rounded-pill bg-success">Success</span>
+        <span id="favButton" class="badge rounded-pill bg-success">Favoriye Ekle</span>
+        <span id="removeButton" class="badge rounded-pill bg-danger">Favoriden çıkar</span>
           <h5 class="card-title">${element.strMeal}</h5>
           <p class="card-text">${element.strInstructions}.</p>
           <h3 class="text-center">İtems</h3>
@@ -96,21 +98,42 @@ Getİngredients = (idValue) => {
           <p class="card-text text-center"><small>${element.strIngredient7}-${element.strMeasure7}</small></p>
           <p class="card-text text-center"><small>${element.strIngredient8}-${element.strMeasure8}</small></p>
           <p class="card-text text-center"><small>${element.strIngredient9}-${element.strMeasure9}</small></p>
+          
         </div><img src="${element.strMealThumb}" class="card-img-bottom" alt="${element.strMeal}">
-        </div>
-          `;
+        </div>`;
+        document.querySelector("#favButton").addEventListener("click", () => {
+          let value = element;
+          SetFavorite(value);
+        });
+        document
+          .querySelector("#removeButton")
+          .addEventListener("click", () => {
+            let value = element;
+            ClearFavorite(value);
+          });
       });
     });
 };
+
 SetFavorite = (value) => {
   favoriteFood.push(value.strMeal);
   const button = document.createElement("button");
   button.className = "list-group-item list-group-item-action";
-  button.innerHTML = value.strMeal;
+  favoriteFood.forEach((element) => {
+    button.innerHTML = element;
+  });
   button.setAttribute("type", "button");
   favorite.appendChild(button);
-  button.addEventListener("click", ()=>{
-    let idValue = value.idMeal
-    Getİngredients(idValue)
-  })
+  button.addEventListener("click", () => {
+    let idValue = value.idMeal;
+    Getİngredients(idValue);
+    ClearFavorite(value);
+  });
 };
+// ClearFavorite = (value) => {
+//   favoriteFood.pop();
+//   if (favoriteFood.length == 0) {
+//     favorite.innerHTML = "";
+//   }
+//   console.log(favoriteFood);
+// };
